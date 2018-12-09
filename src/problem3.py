@@ -147,24 +147,24 @@ def problem3a(window, point, n):
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
 
-    #Implement Here
     start = point
     end = point
     end.y=end.y+50
-    line1= rg.Line(start, end)
-    count = 0
+    line= rg.Line(start, end)
+    line.attach_to(window)
+    total = 0
     for k in range(n):
         start.x = start.x+20
         start.y = start.y-10
         end.x = end.x+20
         end.y = end.y-10
-        line1 = rg.Line(start,end)
+        line = rg.Line(start,end)
         thickness = ((k+1)*2)
-        line1.thickness = thickness
-        count = count + line1.thickness
-        line1.attach_to(window)
+        line.thickness = thickness
+        total = total + thickness
+        line.attach_to(window)
         window.render()
-    return count
+    return total
 
 
 def run_test_problem3b():
@@ -234,6 +234,18 @@ def problem3b(m, point1):
     #    DIFFICULTY:      8 or 9
     #    TIME ESTIMATE:   20 to 30 minutes.
     # -------------------------------------------------------------------------
+    window = rg.RoseWindow(400,650)
+    problem3a(window, point1, m)
+    start2 = point1.x, point1.y-60
+    start3 = point1.x, point1.y-120
+    start4 = point1.x, point1.y-180
+    total = 0
+    for k in range(m):
+        total = total + rg.Line.thickness
+        window.render()
+        window.close_on_mouse_click()
+    return total
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
