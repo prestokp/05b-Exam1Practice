@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Kirk Preston.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -146,6 +146,25 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+
+    #Implement Here
+    start = point
+    end = point
+    end.y=end.y+50
+    line1= rg.Line(start, end)
+    count = 0
+    for k in range(n):
+        start.x = start.x+20
+        start.y = start.y-10
+        end.x = end.x+20
+        end.y = end.y-10
+        line1 = rg.Line(start,end)
+        thickness = ((k+1)*2)
+        line1.thickness = thickness
+        count = count + line1.thickness
+        line1.attach_to(window)
+        window.render()
+    return count
 
 
 def run_test_problem3b():
